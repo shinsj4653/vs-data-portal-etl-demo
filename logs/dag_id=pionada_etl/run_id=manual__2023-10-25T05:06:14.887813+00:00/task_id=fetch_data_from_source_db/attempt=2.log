@@ -1,0 +1,32 @@
+[2023-10-25T05:11:17.917+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509
+[2023-10-25T05:11:17.918+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db'
+[2023-10-25T05:11:17.949+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509
+[2023-10-25T05:11:17.950+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db'
+[2023-10-25T05:11:17.981+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: pionada_etl.fetch_data_from_source_db manual__2023-10-25T05:06:14.887813+00:00 [queued]>
+[2023-10-25T05:11:17.992+0000] {taskinstance.py:1159} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: pionada_etl.fetch_data_from_source_db manual__2023-10-25T05:06:14.887813+00:00 [queued]>
+[2023-10-25T05:11:17.993+0000] {taskinstance.py:1361} INFO - Starting attempt 2 of 2
+[2023-10-25T05:11:18.008+0000] {taskinstance.py:1382} INFO - Executing <Task(PythonOperator): fetch_data_from_source_db> on 2023-10-25 05:06:14.887813+00:00
+[2023-10-25T05:11:18.014+0000] {standard_task_runner.py:57} INFO - Started process 894 to run task
+[2023-10-25T05:11:18.016+0000] {standard_task_runner.py:84} INFO - Running: ['***', 'tasks', 'run', 'pionada_etl', 'fetch_data_from_source_db', 'manual__2023-10-25T05:06:14.887813+00:00', '--job-id', '31', '--raw', '--subdir', 'DAGS_FOLDER/pionada_etl.py', '--cfg-path', '/tmp/tmp1xcs48bu']
+[2023-10-25T05:11:18.022+0000] {standard_task_runner.py:85} INFO - Job 31: Subtask fetch_data_from_source_db
+[2023-10-25T05:11:18.072+0000] {logging_mixin.py:151} INFO - Changing /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509
+[2023-10-25T05:11:18.073+0000] {logging_mixin.py:151} INFO - Failed to change /opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db permission to 509: [Errno 1] Operation not permitted: '/opt/***/logs/dag_id=pionada_etl/run_id=manual__2023-10-25T05:06:14.887813+00:00/task_id=fetch_data_from_source_db'
+[2023-10-25T05:11:18.077+0000] {task_command.py:416} INFO - Running <TaskInstance: pionada_etl.fetch_data_from_source_db manual__2023-10-25T05:06:14.887813+00:00 [running]> on host d181ed02477e
+[2023-10-25T05:11:18.339+0000] {taskinstance.py:1662} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='pionada_etl' AIRFLOW_CTX_TASK_ID='fetch_data_from_source_db' AIRFLOW_CTX_EXECUTION_DATE='2023-10-25T05:06:14.887813+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='manual__2023-10-25T05:06:14.887813+00:00'
+[2023-10-25T05:11:19.682+0000] {python.py:194} INFO - Done. Returned value was:        stt_summary_id  session_id  ...                 created_at updated_at
+0               17303           1  ... 2023-07-28 01:28:24.402788       None
+1               17304           1  ... 2023-07-28 01:28:24.402788       None
+2               17305           1  ... 2023-07-28 01:28:24.402788       None
+3               17306           1  ... 2023-07-28 01:28:24.402788       None
+4               17307           1  ... 2023-07-28 01:28:24.402788       None
+...               ...         ...  ...                        ...        ...
+59448           77730        1922  ... 2023-07-28 18:36:50.301541       None
+59449           77731        1922  ... 2023-07-28 18:36:50.301541       None
+59450           77732        1922  ... 2023-07-28 18:36:50.301541       None
+59451           77733        1922  ... 2023-07-28 18:36:50.301541       None
+59452           77734        1922  ... 2023-07-28 18:36:50.301541       None
+
+[59453 rows x 6 columns]
+[2023-10-25T05:11:20.474+0000] {taskinstance.py:1400} INFO - Marking task as SUCCESS. dag_id=pionada_etl, task_id=fetch_data_from_source_db, execution_date=20231025T050614, start_date=20231025T051117, end_date=20231025T051120
+[2023-10-25T05:11:20.642+0000] {local_task_job_runner.py:228} INFO - Task exited with return code 0
+[2023-10-25T05:11:20.666+0000] {taskinstance.py:2778} INFO - 1 downstream tasks scheduled from follow-on schedule check
