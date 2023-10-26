@@ -1,9 +1,21 @@
 # VISANG DataPortal ETL-demo
-> 비상교육 데이터 포털의 DB 중앙 관리 시스템을 위한 `Apache Airflow ETL 구축` 실습  
+> 비상교육 데이터 포털의 DB 중앙 관리 시스템을 위한 `Apache Airflow ETL 구축` 실습
+
+### 데이터 포털의 메타 데이터 저장용 통합 DB 구축을 위해, `Kafka 기반 CDC`방식와 `Airflow 기반 ETL`을 고민함.  
+-> `실시간 데이터 변화에 대한 처리`는 많지 않으므로, `일괄 처리 작업`을 `자동화` 하는 방향을 선택  
+- [Kafka, Apache Airflow에 대한 나의 블로그 정리 글](https://shinsj4653.github.io/ELK_%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8_%ED%96%A5%ED%9B%84%EA%B0%9C%EC%84%A0%EC%95%88/)
 
 ![image](https://github.com/shinsj4653/vs-data-portal-etl-demo/assets/49470452/a0644525-93cf-4d7a-8229-6b2843ee4f15)
 
 *Demo ETL 파이프라인 구축 성공*
+
+## 목차
+1. [Apache-Airflow](#Apahce-Airflow)
+2. [Docker-Compose](#Docker-Compose)
+3. [Windows 내에 Ubuntu 사용을 위한 WSL 구성](#Windows-내에-Ubuntu-사용을-위한-WSL-구성)
+4. [Fetching docker-compose.yml & Run Docker-Compose](#Fetching-docker-compose.yml-&-Run-Docker-Compose)
+5. [sqlalchemy 기반 DAG 파일 생성](#sqlalchemy-기반-DAG-파일-생성)
+6. [Apache WebServer](#Apache-WebServer)
 
 ## Apache Airflow
 
@@ -137,17 +149,26 @@ $ docker compose up -d flower
 ## `sqlalchemy` 기반 DAG 파일 생성
 ```python
 from datetime import datetime, timedelta
+from dotenv import load_dotenv
+import os
 from airflow import DAG
 from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 from sqlalchemy import create_engine
 import pandas as pd
+import pendulum
+
+# load varaibles from the .env file
+load_dotenv()
+
+# set local timezone
+local_tz = pendulum.timezone("Asia/Seoul")
 
 # Define your default_args, schedule_interval, and other DAG configurations
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 10, 24),
+    'start_date': datetime(2023, 10, 24, tzinfo=local_tz),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
@@ -195,9 +216,10 @@ fetch_data_task >> write_data_task
 
 `sqlalchemy` 를 통한 DB 연결 및 SQL 문 실행을 수행하였고, `xcom_pull` 을 통해 task 사이에서의 데이터 전달이 가능해지도록 구현하였다. 
 
-`PythonOperator` 사용 시, return이 자동으로 Xcom 변수로 지정되게 된다. 또한, `provide_context` 를 통해 Task Instance의 시행 일자, Task ID와 같은 부가 정보들도 액세스 가능해진다.
+`PythonOperator` 사용 시, return이 자동으로 Xcom 변수로 지정되게 된다. 또한, `provide_context` 를 통해 Task Instance의 시행 일자, Task ID와 같은 부가 정보들도 액세스 가능해진다.  
+또한, `pendulum` 라이브러리를 사용하여 DAG 파일 내 로컬 타임존을 적용하여, 스케쥴링 시간이 KST 기준으로 이뤄지도록 구현하였다.  
 
-작성 완료 후, `dag` 폴더 내에 넣어주고 나서 새로고침하면 바로 웹 상에서 확인 가능하다.
+작성 완료 후, `dag` 폴더 내에 넣어주고 나서 새로고침하면 바로 웹 상에서 확인 가능하다. 
 
 ## Apache WebServer
 
