@@ -68,7 +68,9 @@ $ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.7.2/docker-compose
 
 예시 dag 파일들이 있지만, 너무 양이 많은 관계로 삭제해줬다.
 
-![image](https://github.com/shinsj4653/vs-data-portal-etl-demo/assets/49470452/10ebe265-c44c-4267-ab5d-f3e698876650)  
+```yaml
+AIRFLOW__CORE__LOAD_EXAMPLES: 'false'
+```
 *docker-compose.yml 수정1*
 
 
@@ -76,7 +78,9 @@ $ curl -LfO 'https://airflow.apache.org/docs/apache-airflow/2.7.2/docker-compose
 
 한국 시간대로 맞추기 위해 다음 옵션을 추가
 
-![image](https://github.com/shinsj4653/vs-data-portal-etl-demo/assets/49470452/5b2aa345-aae0-400e-8473-43fa31dd0bdc)  
+```yaml
+AIRFLOW__CORE__DEFAULT_TIMEZONE: 'Asia/Seoul'
+```
 
 *docker-compose.yml 수정 2*
 
