@@ -6,15 +6,19 @@ from airflow.operators.postgres_operator import PostgresOperator
 from airflow.operators.python_operator import PythonOperator
 from sqlalchemy import create_engine
 import pandas as pd
+import pendulum
 
 # load varaibles from the .env file
 load_dotenv()
+
+# set local timezone
+local_tz = pendulum.timezone("Asia/Seoul")
 
 # Define your default_args, schedule_interval, and other DAG configurations
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 10, 24),
+    'start_date': datetime(2023, 10, 24, tzinfo=local_tz),
     'email_on_failure': False,
     'email_on_retry': False,
     'retries': 1,
