@@ -1,5 +1,5 @@
-# VISANG DataPortal ETL-demo
-> 비상교육 데이터 포털의 DB 중앙 관리 시스템을 위한 `Apache Airflow ETL 구축` 실습
+# V사 DataPortal ETL-demo
+> V사 데이터 포털의 DB 중앙 관리 시스템을 위한 `Apache Airflow ETL 구축` 실습
 
 ### 데이터 포털의 메타 데이터 저장용 통합 DB 구축을 위해, `Kafka 기반 CDC`방식와 `Airflow 기반 ETL`을 고민함.  
 -> `실시간 데이터 변화에 대한 처리`는 많지 않으므로, `일괄 처리 작업`을 `자동화` 하는 방향으로 먼저 진행하는 것을 선택  
