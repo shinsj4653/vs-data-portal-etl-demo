@@ -5,7 +5,7 @@
 -> `실시간 데이터 변화에 대한 처리`는 많지 않으므로, `일괄 처리 작업`을 `자동화` 하는 방향으로 먼저 진행하는 것을 선택  
 
 -> 향후 `데이터 스트리밍`의 필요성이 커질 경우엔 `Kafka`를 도입할 예정
-- [Kafka, Apache Airflow에 대한 나의 블로그 정리 글](https://shinsj4653.github.io/ELK_%ED%8C%8C%EC%9D%B4%ED%94%84%EB%9D%BC%EC%9D%B8_%ED%96%A5%ED%9B%84%EA%B0%9C%EC%84%A0%EC%95%88/)
+- [Kafka, Apache Airflow에 대한 나의 블로그 정리 글](https://shinsj4653.github.io/VS_DP_%ED%86%B5%ED%95%A9_DB_%EA%B5%AC%EC%B6%95/)
 
 ![image](https://github.com/shinsj4653/vs-data-portal-etl-demo/assets/49470452/a0644525-93cf-4d7a-8229-6b2843ee4f15)
 
